@@ -26,9 +26,7 @@ class BackgroundLayer(Layer):
     """
     def __init__( self, path_name ):
         super(BackgroundLayer, self).__init__()
-        
         self.image = image.load(path_name)
-        
         
     def draw(self):
         texture = self.image.texture
@@ -56,24 +54,6 @@ class BackgroundLayer(Layer):
         
         glDisable(GL_TEXTURE_2D)
         
-class SpriteLayer( Layer ):
-    pass
-
-class SpriteMoveTo( SpriteLayer ):
-    def on_enter( self ):
-        super(SpriteMoveTo, self).on_enter()
-        
-        self.stop()
-
-        sprite = Sprite("grossini.png", (20,100))
-        self.add( sprite )
-        sprite.do( MoveTo( (580,100), 3 ) )
-
-    def on_exit(self):
-        super(SpriteMoveTo, self).on_exit()
-        [ self.remove( c ) for c in self.get_chidren() ]
-        
-
 
 class TitleSubTitleLayer(cocos.layer.Layer):
     def __init__(self, title, subtitle):
@@ -88,7 +68,7 @@ class TitleSubTitleLayer(cocos.layer.Layer):
         
         self.subtitle = text.Label(
                 subtitle, (x/2, y/2-30), font_name = 'Gill Sans',
-                font_size = 44, anchor_x='center', anchor_y='center' )
+                font_size = 38, anchor_x='center', anchor_y='center' )
         self.add( self.subtitle )
         
 class BulletListLayer(cocos.layer.Layer):
@@ -99,7 +79,7 @@ class BulletListLayer(cocos.layer.Layer):
 
         self.title = text.Label(
                 title, (x/2, y-50), font_name = 'Gill Sans',
-                font_size = 64, anchor_x='center', anchor_y='center' )
+                font_size = 50, anchor_x='center', anchor_y='center' )
         self.add( self.title )
 
         start_y = (y/12)*8
@@ -253,6 +233,15 @@ if __name__ == "__main__":
             ]),
         ),
         cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
+            BulletListLayer("/dev/wiimote",[" Temas",
+                " Que es?, descripcion tecnica",
+                " Como se usa en linux y en python",
+                " Ejemplos con python, pygame y panda3d",
+                " Proyecto Achuras ", 
+                " Lanux y PyAr"
+            ]),
+        ),
+        cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
             BulletListLayer("Wii-Mote", [
                 "Que es?",
                 "Como se usa?",
@@ -310,15 +299,18 @@ if __name__ == "__main__":
     all_t = ['RotoZoomTransition','JumpZoomTransition',
             'SlideInLTransition','SlideInRTransition',
             'SlideInBTransition','SlideInTTransition',
-           # 'FlipX3DTransition', 'FlipY3DTransition','FlipAngular3DTransition',
-           # 'ShuffleTransition',
+            
+            #Comentadas, por que fallan con algunas placas de video
+            # 'FlipX3DTransition', 'FlipY3DTransition','FlipAngular3DTransition',
+            # 'ShuffleTransition',
             #'TurnOffTilesTransition',
             #'FadeTRTransition', 'FadeBLTransition',
             #'FadeUpTransition', 'FadeDownTransition',
-            'ShrinkGrowTransition',
-            'CornerMoveTransition',
-            'EnvelopeTransition',
-            'SplitRowsTransition', 'SplitColsTransition',
+
+            #'ShrinkGrowTransition',
+            #'CornerMoveTransition',
+            #'EnvelopeTransition',
+            #'SplitRowsTransition', 'SplitColsTransition',
             'FadeTransition']
 
     transitions = [ getattr(cocos.scenes.transitions, all_t[i % len(all_t)]) 
