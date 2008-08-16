@@ -217,8 +217,8 @@ if __name__ == "__main__":
  #   if wm.wiimoteAvailable:
 
     aspect = 1280 / float(800)
-    director.init( resizable=True, width=640, height=480 ) 
-    director.window.set_fullscreen(True)
+    director.init( resizable=True, width=800, height=600 ) 
+    #director.window.set_fullscreen(True)
     x,y = director.get_window_size()
     #background = BackgroundLayer("background.png")
     #background = BackgroundLayer("coconut.jpg")
