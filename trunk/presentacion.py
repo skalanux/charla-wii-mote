@@ -3,6 +3,7 @@
 
 import sys
 import os
+from motes import Motes
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../'))
 
 
@@ -210,6 +211,11 @@ class ControlLayer(cocos.layer.Layer):
 
 
 if __name__ == "__main__":
+ #   wm = Motes()
+    #Inicializo los mandos del wiimote
+ #   wm.inicializarMandos()
+ #   if wm.wiimoteAvailable:
+
     aspect = 1280 / float(800)
     director.init( resizable=True, width=640, height=480 ) 
     director.window.set_fullscreen(True)
