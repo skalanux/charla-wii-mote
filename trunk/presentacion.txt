@@ -1,0 +1,46 @@
+"/dev/wiimote"
+                " Experimentando con un wii-remote",
+                " --= Autores =-- ",
+                "Chr - chr@lanux.org.ar",
+                "Ska - ska@lanux.org.ar",
+                "Karucha - karucha@lanux.org.ar"
+
+"Wii-Mote",
+                "Que es?",
+                "Como se usa?",
+                "--= Caracteristicas tecnicas =--",
+                    "Acelerometro",
+                    "Camara IR",
+                    "Botones"
+            
+"Wii-Mote" 
+                "Como se usa en linux?",
+                "Libreria libcwiid",
+                "Bluetooth",
+            
+"Wii-Mote"
+                "Ejemplos:",
+                "wii_test.py",
+                "wm-gui"
+            
+"y Ahora que?" 
+                "Pruebas realizadas en Lanux:",
+                "Bateria",
+                "Lapiz",
+            
+"Achuras Experience", 
+                "http://www.achurasexperience.org",
+                "Que es?",
+                "Como se hizo?",
+                "Mostramos juego",
+            
+"Lanux - PyAr"
+                "Reuniones",
+                "Proyectos",
+                "http://www.lanux.org.ar",
+                "http://www.python.com.ar",
+            
+"Gracias!!"
+                "",
+                "Preguntas!",
+
