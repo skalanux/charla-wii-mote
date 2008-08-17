@@ -181,8 +181,9 @@ if __name__ == "__main__":
             ),
         cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
             BulletListLayer("Wii-Mote", [
-                "Como se usa en linux?",
+                "Funciona en GNU/Linux?",
                 "Libreria libcwiid",
+                "+",
                 "Bluetooth",
                 ])
             ),
@@ -190,16 +191,16 @@ if __name__ == "__main__":
             BulletListLayer("Wii-Mote", [
                 "Ejemplos:",
                 "wmgui",
-                "Ejemplo1 - Wiiewer.py"
+                "# ejemplo1 - Wiiewer.py"
                 ])
             ),
         cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
             BulletListLayer("y Ahora que?", [
                 "Pruebas realizadas en Lanux:",
-                "Bateria",
+                "--= Bateria =--",
                 "# ejemplo2 bateria.py ",
                 "# ejemplo3 bateria.py - (grafica)",
-                "# ejemplo3 bateria.py- (palillos)"
+                "# ejemplo4 bateria.py- (palillos)"
                 ])
             ),
         cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
