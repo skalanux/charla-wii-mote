@@ -52,7 +52,6 @@ class BackgroundLayer(Layer):
         glTexCoord2d(tx,0);
         glVertex2f( x,0 )
         glEnd()
-        
         glDisable(GL_TEXTURE_2D)
         
 
@@ -111,9 +110,7 @@ class TransitionControl(cocos.layer.Layer):
         for scene in scenes:
             if not self in scene.get_children():
                 scene.add(self)
-                
         self.scene_p = 0
-        
         
     def next_scene(self):
         self.scene_p +=1 
@@ -145,18 +142,6 @@ class TransitionControl(cocos.layer.Layer):
         elif keyp in (key.PAGEUP,key.LEFT,key.DOWN,):
             self.prev_scene()
             
-class RunScene(cocos.layer.Layer):
-    is_event_handler = True
-    
-    def __init__(self, target):
-        super(RunScene, self).__init__()
-        
-        self.target = target
-        
-    def on_key_press(self, keyp, mod):
-        if keyp in (key.F1,):
-            director.push( self.target )    
-        
 
 if __name__ == "__main__":
 
@@ -269,7 +254,6 @@ if __name__ == "__main__":
     #    if buttons == cwiid.btn_down or buttons == cwiid.btn_left:
     #        self.prev_scene()
     
-
     TransitionControl( scenes, mytransitions )
     director.run (scenes[0])
 
