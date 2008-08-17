@@ -3,9 +3,8 @@
 
 import sys
 import os
-from motes import Motes
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../'))
-
+from motes import Motes
 
 import cocos
 from cocos.director import director
