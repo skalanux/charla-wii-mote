@@ -197,7 +197,9 @@ if __name__ == "__main__":
             BulletListLayer("y Ahora que?", [
                 "Pruebas realizadas en Lanux:",
                 "Bateria",
-                "Lapiz",
+                "# ejemplo2 bateria.py ",
+                "# ejemplo3 bateria.py - (grafica)",
+                "# ejemplo3 bateria.py- (palillos)"
                 ])
             ),
         cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
