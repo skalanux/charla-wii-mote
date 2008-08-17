@@ -244,19 +244,19 @@ if __name__ == "__main__":
     
     mytransitions = [ getattr(cocos.scenes.transitions, all_t[i % len(all_t)]) 
                 for i in range(len(scenes)-1) ]
-    
+        
     #Inicializo los mandos del wiimote
-    #wm = motes()
-    #wm.inicializarmandos()
-    #if wm.wiimoteavailable:
-    #    acc, buttons = wm.returnstrenght()
+    #wm = Motes()
+    #wm.inicializarMandos()
+    #if wm.wiimoteAvailable:
+    #    acc, buttons = wm.returnStrenght()
     #    print buttons
     #    
-    #    if buttons == cwiid.btn_up or buttons == cwiid.btn_right:
-    #        self.next_scene()
-    #    if buttons == cwiid.btn_down or buttons == cwiid.btn_left:
-    #        self.prev_scene()
-    
+    #    if buttons == cwiid.BTN_UP or buttons == cwiid.BTN_RIGHT:
+    #        print "UP - RIGHT"
+    #    if buttons == cwiid.BTN_DOWN or buttons == cwiid.BTN_LEFT:
+    #        print "DOWN - LEFT"
+
     TransitionControl( scenes, mytransitions )
     director.run (scenes[0])
 
