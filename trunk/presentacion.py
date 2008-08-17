@@ -1,10 +1,10 @@
 # This code is so you can run the samples without installing the package
 # -*- encoding: utf-8 -*-
 
-import sys
-import os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../'))
-from motes import Motes
+#import sys
+#import os
+#sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../'))
+#from motes import Motes
 
 import cocos
 from cocos.director import director
@@ -72,10 +72,9 @@ class TitleSubTitleLayer(cocos.layer.Layer):
         self.add( self.subtitle )
         
 class BulletListLayer(cocos.layer.Layer):
-    def __init__(self, title, lines):
+    def __init__(self, title, lines, orientation = "center"):
         super(BulletListLayer, self).__init__()
         x, y = director.get_window_size()
-
 
         self.title = text.Label(
                 title, (x/2, y-50), font_name = 'Gill Sans',
@@ -90,6 +89,8 @@ class BulletListLayer(cocos.layer.Layer):
         max_width = 0
         rendered_lines = []
         step = 300/ max(len(lines),1)
+        if orientation == "left":
+            x = 300;
         i = 0
         for line in lines:
             line_text = text.Label(
@@ -138,9 +139,9 @@ class TransitionControl(cocos.layer.Layer):
             director.replace( self.scenes[ self.scene_p ] )
         
     def on_key_press(self, keyp, mod):
-        if keyp in (key.PAGEDOWN,):
+        if keyp in (key.PAGEDOWN,key.RIGHT,key.UP,):
             self.next_scene()
-        elif keyp in (key.PAGEUP,):
+        elif keyp in (key.PAGEUP,key.LEFT,key.DOWN,):
             self.prev_scene()
             
 class RunScene(cocos.layer.Layer):
@@ -210,23 +211,16 @@ class ControlLayer(cocos.layer.Layer):
 
 
 if __name__ == "__main__":
- #   wm = Motes()
+    #wm = Motes()
     #Inicializo los mandos del wiimote
- #   wm.inicializarMandos()
- #   if wm.wiimoteAvailable:
+    #wm.inicializarMandos()
+    #if wm.wiimoteAvailable:
 
-    aspect = 1280 / float(800)
     director.init( resizable=True, width=800, height=600 ) 
     #director.window.set_fullscreen(True)
-    x,y = director.get_window_size()
-    #background = BackgroundLayer("background.png")
-    #background = BackgroundLayer("coconut.jpg")
-    background = cocos.layer.ColorLayer(0,0,0,255)
-    
-    transition_list = [
-        JumpZoomTransition
-        ]
-    current_transition = 0
+    background = BackgroundLayer("background.png")
+    #background = cocos.layer.ColorLayer(0,0,0,255)
+    #current_transition = 0
 
     scenes = [
         cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
@@ -246,7 +240,7 @@ if __name__ == "__main__":
                 " Lanux y PyAr"
             ]),
         ),
-        cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
+        cocos.scene.Scene (background,
             BulletListLayer("Wii-Mote", [
                 "Que es?",
                 "Como se usa?",
@@ -254,7 +248,7 @@ if __name__ == "__main__":
                     "Acelerometro",
                     "Camara IR",
                     "Botones"
-                ])
+                ],"left")
             ),
         cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
             BulletListLayer("Wii-Mote", [
@@ -304,37 +298,20 @@ if __name__ == "__main__":
     all_t = ['RotoZoomTransition','JumpZoomTransition',
             'SlideInLTransition','SlideInRTransition',
             'SlideInBTransition','SlideInTTransition',
+            'FadeTransition']
             
             #Comentadas, por que fallan con algunas placas de video
-            # 'FlipX3DTransition', 'FlipY3DTransition','FlipAngular3DTransition',
-            # 'ShuffleTransition',
-            #'TurnOffTilesTransition',
-            #'FadeTRTransition', 'FadeBLTransition',
-            #'FadeUpTransition', 'FadeDownTransition',
-
-            #'ShrinkGrowTransition',
-            #'CornerMoveTransition',
-            #'EnvelopeTransition',
-            #'SplitRowsTransition', 'SplitColsTransition',
-            'FadeTransition']
+            #'FlipX3DTransition',
+            #'FlipY3DTransition', 'FlipAngular3DTransition'
+            #'ShuffleTransition', 'TurnOffTilesTransition'
+            #'FadeTRTransition', 'FadeBLTransition'
+            #'FadeUpTransition', 'FadeDownTransition'
+            #'ShrinkGrowTransition', 'CornerMoveTransition'
+            #'EnvelopeTransition'
+            #'SplitRowsTransition', 'SplitColsTransition'
 
     transitions = [ getattr(cocos.scenes.transitions, all_t[i % len(all_t)]) 
                 for i in range(len(scenes)-1) ]
     TransitionControl( scenes, transitions )
-
-    def color_name_scene(name, color):    
-        return cocos.scene.Scene(
-            cocos.layer.ColorLayer(*color).add(
-                cocos.text.Label(
-                    name, (x/2,y/2), 
-                    font_name = 'Gill Sans', font_size = 64, 
-                    anchor_x='center', anchor_y='center'
-                )
-            )
-        )
-    #director.interpreter_locals["uno"] = color_name_scene("uno", (255,0,0,255))
-    #director.interpreter_locals["dos"] = color_name_scene("dos", (0,255,0,255))
-    #director.interpreter_locals["tres"] = color_name_scene("tres", (0,0,255,255))
-    
     director.run (scenes[0])
 
