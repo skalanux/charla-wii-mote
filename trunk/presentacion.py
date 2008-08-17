@@ -1,10 +1,11 @@
 # This code is so you can run the samples without installing the package
 # -*- encoding: utf-8 -*-
 
-#import sys
-#import os
-#sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../'))
-#from motes import Motes
+import sys
+import os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'ejemplos/lib'))
+import cwiid
+from motes import Motes
 
 import cocos
 from cocos.director import director
@@ -17,7 +18,7 @@ from pyglet.window import key
 from cocos.actions import *
 from cocos.layer import *
 from cocos.scenes.transitions import *
-from cocos.sprite import *
+#from cocos.sprite import *
 from cocos import text
 
         
@@ -113,7 +114,7 @@ class TransitionControl(cocos.layer.Layer):
                 
         self.scene_p = 0
         
-            
+        
     def next_scene(self):
         self.scene_p +=1 
         if self.scene_p >= len(self.scenes):
@@ -156,65 +157,8 @@ class RunScene(cocos.layer.Layer):
         if keyp in (key.F1,):
             director.push( self.target )    
         
-class ControlLayer(cocos.layer.Layer):
-    is_event_handler = True
-    
-    def on_enter( self ):
-        super(ControlLayer, self).on_enter()
-        
-        ft_title = font.load( "Arial", 32 )
-        ft_subtitle = font.load( "Arial", 18 )
-        ft_help = font.load( "Arial", 16 )
-
-        self.text_title = font.Text(ft_title, "Transition Demos",
-            x=5,
-            y=480,
-            anchor_x=font.Text.LEFT,
-            anchor_y=font.Text.TOP)
-
-        self.text_subtitle = font.Text(ft_subtitle, transition_list[current_transition].__name__,
-            x=5,
-            y=400,
-            anchor_x=font.Text.LEFT,
-            anchor_y=font.Text.TOP)
-        
-        self.text_help = font.Text(ft_help,"Press LEFT / RIGHT for prev/next example, ENTER to restart example",
-            x=320,
-            y=20,
-            anchor_x=font.Text.CENTER,
-            anchor_y=font.Text.CENTER)
-
-    def step( self, df ):
-        self.text_help.draw()
-
-        self.text_subtitle.text = transition_list[current_transition].__name__
-        self.text_subtitle.draw()
-        self.text_title.draw()
-
-    def on_key_press( self, k , m ):
-        global current_transition, control_p
-        if k == key.LEFT:
-            current_transition = (current_transition-1)%len(transition_list)
-        if k == key.RIGHT:
-            current_transition = (current_transition+1)%len(transition_list)
-        if k == key.ENTER:
-            director.replace( transition_list[current_transition](
-                        control_list[control_p],
-                        (control_list[(control_p+1)%len(control_list)] ),
-                        2)                                
-                    )
-            control_p = (control_p + 1) % len(control_list)
-            return True
-        if k == key.ESCAPE:
-            director.scene.end()
-            return True
-
 
 if __name__ == "__main__":
-    #wm = Motes()
-    #Inicializo los mandos del wiimote
-    #wm.inicializarMandos()
-    #if wm.wiimoteAvailable:
 
     director.init( resizable=True, width=800, height=600 ) 
     #director.window.set_fullscreen(True)
@@ -290,11 +234,11 @@ if __name__ == "__main__":
         cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
             BulletListLayer("Gracias!!", [
                 "",
-                "Preguntas!",
+                "Preguntas?",
                 ])
             ),
         ]
-    transitions = [None]*(len(scenes)-1)
+
     all_t = ['RotoZoomTransition','JumpZoomTransition',
             'SlideInLTransition','SlideInRTransition',
             'SlideInBTransition','SlideInTTransition',
@@ -309,9 +253,23 @@ if __name__ == "__main__":
             #'ShrinkGrowTransition', 'CornerMoveTransition'
             #'EnvelopeTransition'
             #'SplitRowsTransition', 'SplitColsTransition'
-
-    transitions = [ getattr(cocos.scenes.transitions, all_t[i % len(all_t)]) 
+    
+    mytransitions = [ getattr(cocos.scenes.transitions, all_t[i % len(all_t)]) 
                 for i in range(len(scenes)-1) ]
-    TransitionControl( scenes, transitions )
+    
+    #Inicializo los mandos del wiimote
+    #wm = motes()
+    #wm.inicializarmandos()
+    #if wm.wiimoteavailable:
+    #    acc, buttons = wm.returnstrenght()
+    #    print buttons
+    #    
+    #    if buttons == cwiid.btn_up or buttons == cwiid.btn_right:
+    #        self.next_scene()
+    #    if buttons == cwiid.btn_down or buttons == cwiid.btn_left:
+    #        self.prev_scene()
+    
+
+    TransitionControl( scenes, mytransitions )
     director.run (scenes[0])
 
