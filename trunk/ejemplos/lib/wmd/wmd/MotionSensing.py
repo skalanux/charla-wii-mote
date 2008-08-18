@@ -1,10 +1,5 @@
 from wmd.Common import *
 
-
-
-
-
-
 class MSManager:
   force_log_maxlen = 20
   force_disturbance = 200

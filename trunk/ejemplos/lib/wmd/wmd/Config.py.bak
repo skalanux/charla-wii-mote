@@ -60,28 +60,28 @@ CFG = {  # !!!!
   'A': ['click', 'BTN_RIGHT' ],  # A key: right mouse button click
   'B': ['click', 'BTN_LEFT' ],   # B key: left mouse button click
 
-  'H': ['key', 'KEY_LEFTCTRL', 'KEY_LEFTSHIFT', 'KEY_F'],                 # Home key: quits WMD
+  'H': ['quit', 1],                 # Home key: quits WMD
 
-  '+': ['key', 'KEY_KPPLUS' ],      # Plus key: increase WMDPower
-  '-': ['key', 'KEY_KPMINUS' ],       # Minus key: decrease WMDPower
+  '+': ['WMDPower', 'increase' ],      # Plus key: increase WMDPower
+  '-': ['WMDPower', 'decrease' ],       # Minus key: decrease WMDPower
 
   '1': ['key', 'KEY_1' ],        # 1 key: press the '1' key like a keyboard
   '2': ['key', 'KEY_2' ],      # 2 key
 
-  'U': ['key', [ 'KEY_UP' ]  ],    # Toggles LED 1
-  'D': ['key', [ 'KEY_DOWN' ] ],    #         LED 2
-  'L': ['key', [ 'KEY_LEFT' ] ],    #         LED 3
-  'R': ['key', [ 'KEY_RIGHT' ] ]     #         LED 4
+  'U': ['key', [ 'KEY_LEFTCTRL' ]  ],    # Toggles LED 1
+  'D': ['key', [ 'KEY_LEFTCTRL', 'KEY_LEFTALT', 'BTN_LEFT' ] ],    #         LED 2
+  'L': ['key', [ 'KEY_LEFTALT' ] ],    #         LED 3
+  'R': ['key', [ 'KEY_F8' ] ]     #         LED 4
 },
 ##
 ##
 ## This will enable IR sensing by default
-'IR_ENABLE': 0,
+'IR_ENABLE': 1,
 ##
 
 'DISABLE_PYLAB': 0,
 'DISABLE_PYGAME': 0,
-'DISABLE_PYOSD': 0,
+'DISABLE_PYOSD': 1,
 ##
 ## If you having trouble reaching the edges of your screen with the IR mouse
 ## You want to raise the Dead-Zone values at the most 0.50
