@@ -200,7 +200,14 @@ if __name__ == "__main__":
                 "--= Bateria =--",
                 "# ejemplo2 bateria.py ",
                 "# ejemplo3 bateria.py - (grafica)",
-                "# ejemplo4 bateria.py- (palillos)"
+                ])
+            ),
+        cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
+            BulletListLayer("multiples usos", [
+                "Usando el wiimote como mouse:",
+                "WMD",
+                "Usando el wiimote como control remoto",
+                "# ejemplo4 wmd.py",
                 ])
             ),
         cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
