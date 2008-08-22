@@ -1,0 +1,9 @@
+Para que funcione wmd
+
+Hay que instalar
+
+python-bluez
+python-xlib
+lineakd
+
+luego correr el script script_carga.sh dentro de ejemplos/lib
