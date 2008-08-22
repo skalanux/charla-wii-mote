@@ -1,11 +1,11 @@
 # This code is so you can run the samples without installing the package
 # -*- encoding: utf-8 -*-
 
-import sys
-import os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'ejemplos/lib'))
-import cwiid
-from motes import Motes
+#import sys
+#import os
+#sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'ejemplos/lib'))
+#import cwiid
+#from motes import Motes
 
 import cocos
 from cocos.director import director
@@ -101,7 +101,6 @@ class BulletListLayer(cocos.layer.Layer):
 
 class TransitionControl(cocos.layer.Layer):
     is_event_handler = True
-    
     def __init__(self, scenes, transitions=None):
         super(TransitionControl, self).__init__()
         
@@ -141,7 +140,9 @@ class TransitionControl(cocos.layer.Layer):
             self.next_scene()
         elif keyp in (key.PAGEUP,key.LEFT,key.DOWN,):
             self.prev_scene()
-            
+
+    def get_wiimote(self):
+        print "hola"
 
 if __name__ == "__main__":
 
@@ -181,6 +182,7 @@ if __name__ == "__main__":
             ),
         cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
             BulletListLayer("Wii-Mote", [
+                "La gran pregunta:",
                 "Funciona en GNU/Linux?",
                 "Libreria libcwiid",
                 "+",
@@ -195,7 +197,7 @@ if __name__ == "__main__":
                 ])
             ),
         cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
-            BulletListLayer("y Ahora que?", [
+            BulletListLayer("Manos a la Obra", [
                 "Pruebas realizadas en Lanux:",
                 "--= Bateria =--",
                 "# ejemplo2 bateria.py ",
@@ -203,11 +205,17 @@ if __name__ == "__main__":
                 ])
             ),
         cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
-            BulletListLayer("multiples usos", [
+            BulletListLayer("Multiples usos", [
                 "Usando el wiimote como mouse:",
                 "WMD",
                 "Usando el wiimote como control remoto",
                 "# ejemplo4 wmd.py",
+                ])
+            ),
+        cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
+            BulletListLayer("Mas multiples usos", [
+                "whiteboard:",
+                "# Video",
                 ])
             ),
         cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
@@ -219,19 +227,19 @@ if __name__ == "__main__":
                 ])
             ),
         cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
+            BulletListLayer("Gracias!!", [
+                "",
+                "Preguntas?",
+                ])
+            ),
+        cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
             BulletListLayer("Lanux - PyAr",  [
                 "Reuniones",
                 "Proyectos",
                 "http://www.lanux.org.ar",
                 "http://www.python.com.ar",
                 ])
-            ),
-        cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
-            BulletListLayer("Gracias!!", [
-                "",
-                "Preguntas?",
-                ])
-            ),
+            )
         ]
 
     all_t = ['RotoZoomTransition','JumpZoomTransition',
@@ -256,7 +264,7 @@ if __name__ == "__main__":
     #wm = Motes()
     #wm.inicializarMandos()
     #if wm.wiimoteAvailable:
-    #    acc, buttons = wm.returnStrenght()
+    #    acc, buttons = m.returnStrenght()
     #    print buttons
     #    
     #    if buttons == cwiid.BTN_UP or buttons == cwiid.BTN_RIGHT:
