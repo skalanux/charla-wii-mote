@@ -113,18 +113,20 @@ def actions(wminfo):
         simulate_key_being_pressed_and_released(CODE_B)
     elif pressed_button == BUTTON_A:
         simulate_key_being_pressed_and_released(CODE_A)
+        """
     elif pressed_button == BUTTON_HOME:
         simulate_key_being_pressed_and_released(CODE_HOME)
+        """
     elif pressed_button == BUTTON_1:
         simulate_key_being_pressed_and_released(CODE_1)
     elif pressed_button == BUTTON_2:
         simulate_key_being_pressed_and_released(CODE_2)
 
-    print pitch
-    if z > 2.5 and pitch < 1 and pitch > 0.7:
-        simulate_key_being_pressed_and_released(CODE_RIGHT, 1)
-    elif z > 2.5 and pitch < 0.5:
-        simulate_key_being_pressed_and_released(CODE_LEFT, 1)
+    if pressed_button == BUTTON_HOME:
+        if z > 2.5 and pitch < 1 and pitch > 0.7:
+            simulate_key_being_pressed_and_released(CODE_RIGHT, 1)
+        elif z > 2.5 and pitch < 0.5:
+            simulate_key_being_pressed_and_released(CODE_LEFT, 1)
 
 if __name__ == "__main__":
     mote = Motes()
