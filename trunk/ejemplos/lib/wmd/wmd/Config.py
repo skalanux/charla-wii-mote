@@ -12,7 +12,10 @@ CFG = {  # !!!!
 ##
 ## This is the address of my Wiimote.
 ##
-'MY_WIIMOTE_ADDR': "00:1E:35:DE:29:82",
+#  'MY_WIIMOTE_ADDR': "00:1E:35:DE:29:82", es el de Ska
+#  'MY_WIIMOTE_ADDR': "00:1E:35:DE:28:AD", es el de Chr
+'MY_WIIMOTE_ADDR': "00:1E:35:DE:28:AD",
+
 ## 
 ## Or, if I'm lazy, I'll just comment it out and uncomment
 ## An empty address: it will force autodetection:
