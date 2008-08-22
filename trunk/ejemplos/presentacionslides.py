@@ -95,7 +95,7 @@ def actions(wminfo):
     def simulate_key_being_pressed_and_released(keycode): 
         os.popen2("xsendkeycode "+str(keycode)+" 1")
         os.popen2("xsendkeycode "+str(keycode)+" 0")
-        time.sleep(0.4)
+        time.sleep(0.8)
 
     if pressed_button == BUTTON_LEFT:
         simulate_key_being_pressed_and_released(CODE_LEFT)
@@ -121,9 +121,9 @@ def actions(wminfo):
         simulate_key_being_pressed_and_released(CODE_2)
 
     print pitch
-    if z > 2 and pitch < 1 and pitch > 0.7:
+    if z > 2.5 and pitch < 1 and pitch > 0.7:
         simulate_key_being_pressed_and_released(CODE_RIGHT)
-    elif z > 2 and pitch < 0.5:
+    elif z > 2.5 and pitch < 0.5:
         simulate_key_being_pressed_and_released(CODE_LEFT)
 
 if __name__ == "__main__":
