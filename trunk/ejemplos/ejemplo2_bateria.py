@@ -37,7 +37,12 @@ class baterias:
 
 if __name__ == '__main__':
     #Inicializo el mixer de pygame
-    pygame.mixer.init()
+    try:
+        pygame.mixer.init()
+    except:
+        print "Error en pygame.mixer.init() en setup_everything():"
+        print sys.exc_info()[0],":",sys.exc_info()[1]
+
     #Leo todos los archivos
     archivosplatillos = glob.glob ('sound/platillos/*.ogg')
     archivosbombos = glob.glob ('sound/bombos/*.ogg')
