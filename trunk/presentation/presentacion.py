@@ -161,25 +161,26 @@ if __name__ == "__main__":
         cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
             BulletListLayer("from wiimote import fun",[" Temas",
                 " Que es?, descripcion tecnica",
-                " Como se usa en linux y en python",
-                " Ejemplos con python, pygame y panda3d",
-                " Proyecto Achuras ",
+                " Usandolo desde python",
+                " Ejemplos con python, pygame",
+                " Otros usos",
                 " Lanux y PyAr"
             ]),
         ),
         cocos.scene.Scene (background,
             BulletListLayer("Wii-Mote", [
                 "Que es?",
-                "Como se usa?",
                 "--= Caracteristicas tecnicas =--",
                     "Acelerometro",
                     "Camara IR",
-                    "Botones"
+                    "Botones",
+                    "Speaker",
+                    "Vibrador"
                 ],"left")
             ),
         cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
             BulletListLayer("Wii-Mote", [
-                "Funciona en GNU/Linux?",
+                "Se puede usar desde python?",
                 "Libreria libcwiid",
                 "+",
                 "Bluetooth",
@@ -189,39 +190,69 @@ if __name__ == "__main__":
             BulletListLayer("Wii-Mote", [
                 "Ejemplos:",
                 "wmgui",
-                "# ejemplo1 - Wiiewer.py"
+                "# ejemplo1 - ex1_wiiviewer.py"
                 ])
             ),
         cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
-            BulletListLayer("y Ahora que?", [
-                "Pruebas realizadas en Lanux:",
+            BulletListLayer("Pruebas", [
+                "Acelerometro y botones",
                 "--= Bateria =--",
-                "# ejemplo2 bateria.py ",
-                "# ejemplo3 bateria.py - (grafica)",
+                "Hydrogen",
+                "# ejemplo2 - ex2_drums.py ",
                 ])
             ),
         cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
-            BulletListLayer("multiples usos", [
-                "Usando el wiimote como mouse:",
+            BulletListLayer("Pruebas", [
+                "Acelerometro y botones",
+                "--= Control Remoto =--",
+                "Mplayer",
+                "# ejemplo3 - ex3_remote.py ",
+                ])
+            ),
+
+        cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
+            BulletListLayer("###Falta###Pruebas", [
+                "Controlando la PC:",
                 "WMD",
-                "Usando el wiimote como control remoto",
-                "# ejemplo4 wmd.py",
+                "# ejemplo4 ex4_wmd.py",
                 ])
             ),
         cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
-            BulletListLayer("Achuras Experience", [
-                "http://www.achurasexperience.org",
-                "Que es?",
-                "Como se hizo?",
-                "Mostramos juego",
+            BulletListLayer("###FALTA###Pruebas", [
+                "Camara IR",
+                "--= Pistola ###Cambiar nombre### =--",
+                "Juegoxxx",
+                "# ejemplo5 - ex5_gun.py ",
                 ])
             ),
+        cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
+            BulletListLayer("###FALTA###Pruebas", [
+                "Pitch y Roll",
+                "--= Distorsionador =--",
+                "Juegoxxx",
+                "# ejemplo5 - ex5_gun.py ",
+                ])
+            ),
+
+        cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
+            BulletListLayer("Panda 3d", [
+                "Mostramos juego Zapo",
+                ])
+            ),
+        cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
+            BulletListLayer("Otros Usos", [
+                "GTK WhiteBoard (Video CHR",
+                "15 Tons",
+                "Head Tracking Project",
+                ])
+            ),
+
         cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
             BulletListLayer("Lanux - PyAr",  [
                 "Reuniones",
                 "Proyectos",
                 "http://www.lanux.org.ar",
-                "http://www.python.com.ar",
+                "http://www.python.com.ar"
                 ])
             ),
         cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
