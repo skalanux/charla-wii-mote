@@ -41,9 +41,6 @@ class Autitux(object):
             #if acc[Z] > 200 and acc[X] < 200:
             #    action = MOVE_DOWN
 
-            print roll
-
-            continue
 
             """
             if pitch < THRESHOLD_PITCH_LEFT_MIN and \
