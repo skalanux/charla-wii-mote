@@ -1,11 +1,22 @@
-# -*- coding: iso-8859-1 -*-
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import os
+import sys
+import time
+
+import cwiid
 import pygame
+
 from pygame.locals import *
-import sys, time, cwiid
-from motes import Motes
 from mysprites import *
 
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../lib'))
+
+from wiimote import WiiMote
+
 SCREEN_WIDTH, SCREEN_HEIGHT = 800, 600
+IMAGE_PATH = 'examples/ex5_gun/images/'
 # Definimos la pantalla
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
@@ -17,37 +28,44 @@ pygame.init()
 pygame.display.set_caption("Pistola!")
 
 #Cargo la imagen del fondo y la muestro
-fondo = pygame.image.load("images/fondo.png")
+fondo = pygame.image.load(IMAGE_PATH + '/fondo.png')
 screen.blit(fondo, (0,0))
 
 
 def main():
 
     # Cargo los Sprites
-    mira = miraSprite()
-    pato = patoSprite()
+    mira = MiraSprite()
+    pato = PatoSprite()
 
-    miraGroup = pygame.sprite.Group()
-    miraGroup.add(mira)
-    miraGroup.draw(screen)
+    mira_group = pygame.sprite.Group()
+    mira_group.add(mira)
+    mira_group.draw(screen)
 
-    patosGroup = pygame.sprite.Group()
-    patosGroup.add(pato)
-    patosGroup.draw(screen)
+    patos_group = pygame.sprite.Group()
+    patos_group.add(pato)
+    patos_group.draw(screen)
 
-    #Inicializo los mandos del wiimote
-    wm = Motes()
-    wm.inicializarMandos()
+    # Inicializo los mandos del wiimote
+    wm = WiiMote()
+    try:
+        wm.initialize()
+    except:
+        raise Exception
 
     playing = True
     while playing:
-        #Chequeo el wiimote sino otorgo valores aleatorios para que no suene al
-        #menos que se aprete la letra D
-        pitch, roll, accel, (x,y,z), irSrc = wm.getPitch()
-        if wm.wiimoteAvailable and irSrc[0]['pos'][0] != None:
-            print irSrc
-            irSrcX = irSrc[0]['pos'][0]
-            irSrcY = irSrc[0]['pos'][1]
+        # Chequeo el wiimote sino otorgo valores aleatorios para que no suene al
+        # menos que se aprete la letra D
+
+        try:
+            ir_src = wm.ir_src[0]['pos']
+            ir_pos_x = ir_src[0]
+            ir_pos_y = ir_src[1]
+        except:
+            ir_pos_x = None
+            ir_pos_y = None
+
 
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -59,24 +77,27 @@ def main():
                     playing = False
 
         #Muevo el stick a donde dice el irSrcX
-        print irSrcX, irSrcY
-        if wm.wiimoteAvailable and irSrcX != None:
-            irSrcX = 800 - irSrcX
-            #irSrcX = (irSrcX * 0.4) + 200
-            #irSrcY = (irSrcY * 0.4) + 180
-            mira.rect.topleft = (irSrcX, irSrcY)
+        if ir_pos_x is not None:
+            ir_pos_x = SCREEN_WIDTH - ir_pos_x
+            ir_pos_y = SCREEN_HEIGHT - ir_pos_y
+            mira.rect.topleft = (ir_pos_x, ir_pos_y)
 
         # Verifico las colisiones
-        collide_Acerto = pygame.sprite.spritecollide(mira,patosGroup,True)
+        collide_acerto = pygame.sprite.spritecollide(mira,patos_group,True)
 
-        if collide_Acerto:
-                pato.loadimage(2)
-                pygame.time.wait(100)
-                patosGroup.clear(screen, fondo)
-                patosGroup.draw(screen)
+        if collide_acerto:
+            if ir_pos_x is None:
+                #pato.load_image(2)
+                #pygame.time.wait(100)
+                patos_group.clear(screen, fondo)
+                patos_group.draw(screen)
+            else:
+                #pygame.time.wait(100)
+                patos_group.draw(screen)
+                pato.load_image(1)
 
-        miraGroup.clear(screen, fondo)
-        miraGroup.draw(screen)
+        mira_group.clear(screen, fondo)
+        mira_group.draw(screen)
         pygame.display.flip()
 
     pygame.quit()

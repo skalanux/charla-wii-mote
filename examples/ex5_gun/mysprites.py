@@ -1,29 +1,33 @@
-# -*- coding: iso-8859-1 -*-
+# -*- coding: utf-8 -*-
 
 import pygame
+
 from pygame.locals import *
-from gun import SCREEN_WIDTH, SCREEN_HEIGHT, screen
-class patoSprite(pygame.sprite.Sprite):
-    def loadimage(self, action):
+
+from gun import SCREEN_WIDTH, SCREEN_HEIGHT, screen, IMAGE_PATH
+
+class PatoSprite(pygame.sprite.Sprite):
+    def load_image(self, action):
         if action == 1:
-            self.image = pygame.image.load("images/PatoLucas.png")
+            self.image = pygame.image.load(IMAGE_PATH + '/PatoLucas.png')
         else:
-            self.image = pygame.image.load("images/PatoLucas2.png")
+            self.image = pygame.image.load(IMAGE_PATH + '/PatoLucas2.png')
 
         self.rect = self.image.get_rect()
 
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.loadimage(1)
+        self.load_image(1)
 
-    def accert():
-        self.loadimage(2)
+    def acert():
+        self.load_image(2)
 
-class miraSprite(pygame.sprite.Sprite):
+class MiraSprite(pygame.sprite.Sprite):
     SPEED = 10
+
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load("images/mira.png")
+        self.image = pygame.image.load(IMAGE_PATH + '/mira.png')
         self.rect = self.image.get_rect()
         self.rect.center  = (SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
 
