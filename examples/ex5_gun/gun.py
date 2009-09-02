@@ -57,16 +57,16 @@ def main():
     while playing:
         # Chequeo el wiimote sino otorgo valores aleatorios para que no suene al
         # menos que se aprete la letra D
-
         try:
             ir_src = wm.ir_src[0]['pos']
             ir_pos_x = ir_src[0]
             ir_pos_y = ir_src[1]
         except:
+            ir_src = None
             ir_pos_x = None
             ir_pos_y = None
 
-
+        print ir_src
         for event in pygame.event.get():
             if event.type == QUIT:
                 playing = False
@@ -82,19 +82,18 @@ def main():
             ir_pos_y = SCREEN_HEIGHT - ir_pos_y
             mira.rect.topleft = (ir_pos_x, ir_pos_y)
 
-        # Verifico las colisiones
-        collide_acerto = pygame.sprite.spritecollide(mira,patos_group,True)
 
-        if collide_acerto:
-            if ir_pos_x is None:
-                #pato.load_image(2)
+        if ir_src is None:
+            # Verifico las colisiones
+            collide_acerto = pygame.sprite.spritecollide(mira,patos_group,True)
+
+            if collide_acerto:
                 #pygame.time.wait(100)
                 patos_group.clear(screen, fondo)
+                pato.load_image(2)
+                patos_group.add(pato)
                 patos_group.draw(screen)
-            else:
-                #pygame.time.wait(100)
-                patos_group.draw(screen)
-                pato.load_image(1)
+                print "entro"
 
         mira_group.clear(screen, fondo)
         mira_group.draw(screen)
