@@ -55,8 +55,7 @@ def main():
 
     playing = True
     while playing:
-        # Chequeo el wiimote sino otorgo valores aleatorios para que no suene al
-        # menos que se aprete la letra D
+        # Cargo los valores del ir x e y
         try:
             ir_src = wm.ir_src[0]['pos']
             ir_pos_x = ir_src[0]
@@ -66,17 +65,21 @@ def main():
             ir_pos_x = None
             ir_pos_y = None
 
-        print ir_src
+        #print ir_src
         for event in pygame.event.get():
             if event.type == QUIT:
                 playing = False
             elif event.type == KEYDOWN:
-                if event.key == K_d:
-                    z = 2
+                if event.key == K_r:
+                    patos_group.clear(screen, fondo)
+                    pato.load_image(1)
+                    patos_group.add(pato)
+                    patos_group.draw(screen)
+
                 elif event.key == K_ESCAPE:
                     playing = False
 
-        #Muevo el stick a donde dice el irSrcX
+        #Muevo la mira donde dice el ir_pos x e y
         if ir_pos_x is not None:
             ir_pos_x = SCREEN_WIDTH - ir_pos_x
             ir_pos_y = SCREEN_HEIGHT - ir_pos_y
@@ -88,12 +91,15 @@ def main():
             collide_acerto = pygame.sprite.spritecollide(mira,patos_group,True)
 
             if collide_acerto:
-                #pygame.time.wait(100)
+                pygame.time.wait(100)
                 patos_group.clear(screen, fondo)
                 pato.load_image(2)
                 patos_group.add(pato)
                 patos_group.draw(screen)
                 print "entro"
+        else:
+            patos_group.clear(screen, fondo)
+            patos_group.draw(screen)
 
         mira_group.clear(screen, fondo)
         mira_group.draw(screen)
