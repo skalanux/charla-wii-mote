@@ -23,7 +23,6 @@ class PatoSprite(pygame.sprite.Sprite):
         self.load_image(2)
 
 class MiraSprite(pygame.sprite.Sprite):
-    SPEED = 10
 
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
@@ -31,6 +30,3 @@ class MiraSprite(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center  = (SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
 
-    def movs(self, dx, dy):
-        self.rect.move_ip((dx * self.SPEED, dy * self.SPEED))
-        self.rect.clamp_ip( screen.get_rect() )
