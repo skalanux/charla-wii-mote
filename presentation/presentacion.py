@@ -218,30 +218,25 @@ if __name__ == "__main__":
                 ])
             ),
         cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
-            BulletListLayer("###FALTA###Pruebas", [
+            BulletListLayer("Pruebas", [
                 "Camara IR",
-                "--= Pistola ###Cambiar nombre### =--",
-                "Juegoxxx",
+                "--= Pistola =--",
+                "Pato",
                 "# ejemplo5 - ex5_gun.py ",
                 ])
             ),
         cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
-            BulletListLayer("###FALTA###Pruebas", [
+            BulletListLayer("Pruebas", [
                 "Pitch y Roll",
-                "--= Distorsionador =--",
+                "--= Autitux =--",
                 "Juegoxxx",
                 "# ejemplo5 - ex5_gun.py ",
                 ])
             ),
 
         cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
-            BulletListLayer("Panda 3d", [
-                "Mostramos juego Zapo",
-                ])
-            ),
-        cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
             BulletListLayer("Otros Usos", [
-                "GTK WhiteBoard (Video CHR",
+                "GTK WhiteBoard",
                 "15 Tons",
                 "Head Tracking Project",
                 ])
