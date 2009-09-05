@@ -38,6 +38,7 @@ EVENT_BIT_ALL = {STATE_ON: EVENT_BIT_ALL_ON,
 class USBDevice(object):
     def _exec_commands(self, commands_list):
         for command in commands_list:
+            print command
             subprocess.Popen(command)
 
     def _add_cmd(self, command_list, commands):
@@ -50,7 +51,7 @@ class USBDevice(object):
         # First send off to all events
         command_off = EVENT_BIT_ALL_OFF
         commands_list = []
-        self._add_cmd(commands_list, command_off)
+        #self._add_cmd(commands_list, command_off)
         self._add_cmd(commands_list, event[state])
         self._exec_commands(commands_list)
 
