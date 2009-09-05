@@ -184,13 +184,14 @@ if __name__ == "__main__":
                 "Libreria libcwiid",
                 "+",
                 "Bluetooth",
+                "Libreria  WMD",
                 ])
             ),
         cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
             BulletListLayer("Wii-Mote", [
                 "Ejemplos:",
                 "wmgui",
-                "# ejemplo1 - ex1_wiiviewer.py"
+                "ex1_wiiviewer.py"
                 ])
             ),
         cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
@@ -198,7 +199,7 @@ if __name__ == "__main__":
                 "Acelerometro y botones",
                 "--= Bateria =--",
                 "Hydrogen",
-                "# ejemplo2 - ex2_drums.py ",
+                "ex2_drums.py ",
                 ])
             ),
         cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
@@ -206,31 +207,33 @@ if __name__ == "__main__":
                 "Acelerometro y botones",
                 "--= Control Remoto =--",
                 "Mplayer",
-                "# ejemplo3 - ex3_remote.py ",
+                "ex3_remote.py ",
+                ])
+            ),
+
+       cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
+            BulletListLayer("Pruebas", [
+                "Pitch",
+                "--= Autitux =--",
+                "ex4_autitux",
                 ])
             ),
 
         cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
-            BulletListLayer("###Falta###Pruebas", [
-                "Controlando la PC:",
-                "WMD",
-                "# ejemplo4 ex4_wmd.py",
+            BulletListLayer("Pruebas", [
+                "Camara IR",
+                "--= Pistola 'Wiimote Quieto' =--",
+                "Pato",
+                "ex5_gun",
                 ])
             ),
+
         cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
             BulletListLayer("Pruebas", [
                 "Camara IR",
-                "--= Pistola =--",
+                "--= Pistola 'Wiimote en movimiento' =--",
                 "Pato",
-                "# ejemplo5 - ex5_gun.py ",
-                ])
-            ),
-        cocos.scene.Scene (cocos.layer.ColorLayer(0,0,0,255),
-            BulletListLayer("Pruebas", [
-                "Pitch y Roll",
-                "--= Autitux =--",
-                "Juegoxxx",
-                "# ejemplo5 - ex5_gun.py ",
+                "ex6_gun",
                 ])
             ),
 
