@@ -83,10 +83,10 @@ def main():
         if ir_pos_x is not None:
             ir_pos_x = SCREEN_WIDTH - ir_pos_x
             ir_pos_y = SCREEN_HEIGHT - ir_pos_y
-            mira.rect.topleft = (ir_pos_x, ir_pos_y)
-
+            mira.rect.topleft = (ir_pos_x * 2, ir_pos_y *2)
 
         if ir_src is None:
+            print "entro"
             # Verifico las colisiones
             collide_acerto = pygame.sprite.spritecollide(mira,patos_group,True)
 
@@ -96,7 +96,6 @@ def main():
                 pato.load_image(2)
                 patos_group.add(pato)
                 patos_group.draw(screen)
-                print "entro"
         else:
             patos_group.clear(screen, fondo)
             patos_group.draw(screen)
