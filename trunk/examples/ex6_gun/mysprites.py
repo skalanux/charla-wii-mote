@@ -29,5 +29,5 @@ class MiraSprite(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load(IMAGE_PATH + '/mira.png')
         self.rect = self.image.get_rect()
-        #self.rect.center  = (SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
+        self.rect.center  = (SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
 
