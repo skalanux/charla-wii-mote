@@ -5,8 +5,11 @@ import os
 import sys
 import time
 
-import cwiid
+#import cwiid
 import pygame
+
+from cwiid import BTN_UP, BTN_DOWN, BTN_LEFT, BTN_RIGHT, BTN_A, BTN_B, BTN_1, BTN_2, \
+    BTN_MINUS, BTN_PLUS, BTN_HOME, Z, X, Y
 
 from pygame.locals import *
 from mysprites import *
@@ -65,6 +68,8 @@ def main():
             ir_pos_x = None
             ir_pos_y = None
 
+        button = wm.buttons
+
         #print ir_src
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -82,10 +87,10 @@ def main():
         #Muevo la mira donde dice el ir_pos x e y
         if ir_pos_x is not None:
             ir_pos_x = SCREEN_WIDTH - ir_pos_x
-            ir_pos_y = SCREEN_HEIGHT - ir_pos_y
+            #ir_pos_y = SCREEN_HEIGHT - ir_pos_y
             mira.rect.topleft = (ir_pos_x, ir_pos_y)
 
-        if ir_src is None:
+        if button == BTN_B:
             # Verifico las colisiones
             collide_acerto = pygame.sprite.spritecollide(mira,patos_group,True)
 
