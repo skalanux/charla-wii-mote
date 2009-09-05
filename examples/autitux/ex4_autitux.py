@@ -20,6 +20,9 @@ THRESHOLD_PITCH_LEFT_MAX = -1
 THRESHOLD_PITCH_RIGHT_MIN = 0.15
 THRESHOLD_PITCH_RIGHT_MAX = 1
 
+DIRECTION_FORWARD = 'FORWARD'
+DIRECTION_BACKWARDS = 'BACKWARDS'
+
 class Autitux(object):
 
     def main(self, wm):
@@ -28,6 +31,7 @@ class Autitux(object):
         print "Presioná el boton HOME del Wiimote para salir..."
         buttons = 0
         usb_device = USBDevice()
+        direction = None
         while buttons != BTN_HOME:
             acc = wm.acceleration
             buttons = wm.buttons
@@ -53,25 +57,26 @@ class Autitux(object):
 
             if pitch < THRESHOLD_PITCH_LEFT_MIN and \
                 pitch > THRESHOLD_PITCH_LEFT_MAX:
-                print "LEFT"
-                usb_device.send_event(EVENT_BIT_1, STATE_ON)
+                print "FORWARD %s" % direction
+                if direction != DIRECTION_FORWARD:
+                    usb_device.send_event(EVENT_BIT_2, STATE_ON)
+                    direction = DIRECTION_FORWARD
                 continue
 
             if pitch > THRESHOLD_PITCH_RIGHT_MIN and \
                 pitch < THRESHOLD_PITCH_RIGHT_MAX:
-                print "RIGHT"
-                usb_device.send_event(EVENT_BIT_2, STATE_ON)
+                print "BACKWARDS %s" % direction
+                if direction != DIRECTION_BACKWARDS:
+                    usb_device.send_event(EVENT_BIT_2, STATE_OFF)
+                    direction = DIRECTION_BACKWARDS
                 continue
-
-
-
 
             if action != 0:
                 try:
                     press_key(ACTIONS[action])
                 except:
-                    print "Action no registered for button: %s" % action
-                time.sleep(0.25)
+                    print "Action not registered for button: %s" % action
+                time.sleep(0.15)
 
 if __name__ == '__main__':
     wm = WiiMote()
