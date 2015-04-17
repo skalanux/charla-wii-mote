@@ -1,0 +1,2 @@
+Charla y ejemplos utilizados para la charla del wii-mote.
+Se encuentran la presentación realizada con Cocos2D , y los ejemplos de que fuimos realizando, con python, pygame y panda3d, para probar el dispositivo.
